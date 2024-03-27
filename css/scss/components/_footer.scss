@@ -1,0 +1,43 @@
+.footer {
+  padding: var(--side-spacing-md);
+
+  .row {
+    flex-wrap: wrap;
+  }
+  
+  .copy-text {
+    font-size: 24px;
+    margin: 0 0 2rem 0;
+    width: 100%;
+  }
+
+  &-nav {
+    align-items: center;
+    display: flex;
+    gap: 0 var(--side-spacing-lg);
+
+    &-link {
+      color: white;
+      font-size: 24px;
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    padding: var(--side-spacing-lg);
+
+    .row {
+      flex-wrap: nowrap;
+    }
+
+    .copy-text {
+      margin-bottom: 0;
+      width: 90%;
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .copy-text {
+      width: 55%;
+    }
+  }
+}
