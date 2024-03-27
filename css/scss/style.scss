@@ -1,0 +1,41 @@
+@import "./includes/vars";
+@import "./includes/mixins";
+
+:root {
+  --color-green: #005740;
+  --color-green-light: #a8d6ae;
+  --color-yellow-light: #f8f4e6;
+  --color-yellow: #f4a900;
+  --color-black: #0d0204;
+
+  --fw-normal: 400;
+  --fw-bold: 600;
+
+  --ff-text: "Flama", sans-serif;
+  --ff-title: "Flama Semicondensed Bold Regular", sans-serif;
+
+  --side-spacing-sm: 20px;
+  --side-spacing-md: calc(var(--side-spacing-sm) * 2);
+  --side-spacing-lg: calc(var(--side-spacing-md) * 2);
+}
+
+body {
+  font-family: var(--ff-text);
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--ff-title);
+}
+
+@import "./includes/common";
+@import "./components/header";
+// SECTIONS
+@import "./components/sections/intro";
