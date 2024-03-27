@@ -52,21 +52,24 @@
     .col {
       &-text {
         padding-left: var(--side-spacing-lg);
+        flex-basis: 40%;
       }
 
       &-img {
         line-height: 0;
+        flex-basis: 60%;
   
         img {
+          object-fit: cover;
           height: 498px;
-          width: auto;
+          width: 100%;
         }
       }
     }
 
     &-title {
       font-size: 60px;
-      padding: 0 var(--side-spacing-md);
+      padding: 0 var(--side-spacing-lg);
     }
 
     &-text {

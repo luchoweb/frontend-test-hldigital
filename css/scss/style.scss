@@ -15,8 +15,9 @@
   --ff-title: "Flama Semicondensed Bold Regular", sans-serif;
 
   --side-spacing-sm: 20px;
-  --side-spacing-md: calc(var(--side-spacing-sm) * 2);
-  --side-spacing-lg: calc(var(--side-spacing-md) * 2);
+  --side-spacing-md: 35px;
+  --side-spacing-lg: 50px;
+  --section-spacing: 80px;
 }
 
 body {
@@ -37,5 +38,4 @@ h6 {
 
 @import "./includes/common";
 @import "./components/header";
-// SECTIONS
-@import "./components/sections/intro";
+@import "./components/sections/style";

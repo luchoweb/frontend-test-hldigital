@@ -1,8 +1,22 @@
 .header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+
   &-bar {
     background-color: white;
     text-align: center;
     padding: .8rem 0;
+    position: relative;
+
+    &::after {
+      content: "×";
+      display: block;
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
 
     &-text {
       font-size: 14.3px;
