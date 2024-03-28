@@ -9,10 +9,13 @@
     text-align: center;
     padding: .8rem 0;
     position: relative;
+    max-height: 57px;
+    transition: all 0.2s linear;
 
-    &::after {
-      content: "×";
+    &-close {
+      cursor: pointer;
       display: block;
+      font-style: normal;
       position: absolute;
       right: 1rem;
       top: 50%;
@@ -23,6 +26,11 @@
       font-size: 14.3px;
       line-height: 1.1em;
       margin: 0;
+    }
+
+    &.closed {
+      max-height: 0;
+      padding: 0;
     }
   }
 
