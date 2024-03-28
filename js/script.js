@@ -1,3 +1,13 @@
+const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
+  const { top, left, bottom, right } = el.getBoundingClientRect();
+  const { innerHeight, innerWidth } = window;
+  return partiallyVisible
+    ? ((top > 0 && top < innerHeight) ||
+        (bottom > 0 && bottom < innerHeight)) &&
+        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+    : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};
+
 const closeHeaderBar = () => {
   const elements = {
     headerBar: document.querySelector(".header-bar"),
@@ -9,6 +19,60 @@ const closeHeaderBar = () => {
   });
 };
 
+const formatCurrency = (amount) =>
+  new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  }).format(amount);
+
+const counterAnimated = ({
+  obj,
+  start,
+  end,
+  type = "number",
+  duration = 1000,
+}) => {
+  let startTimestamp = null;
+  const startNum = parseFloat(start);
+  const endNum = parseFloat(end);
+
+  const step = (timestamp) => {
+    if (!startTimestamp) startTimestamp = timestamp;
+
+    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+    const number = Math.floor(progress * (endNum - startNum) + startNum);
+
+    obj.innerHTML = type === "currency" ? formatCurrency(number) : number;
+
+    if (progress < 1) window.requestAnimationFrame(step);
+  };
+
+  window.requestAnimationFrame(step);
+};
+
+const runCounter = () => {
+  const nextCounterSection = document.querySelector(".visit-local");
+  const firstCounter = document.querySelector(".hw-counter");
+  const counters = document.querySelectorAll(".hw-counter");
+
+  if (
+    elementIsVisibleInViewport(nextCounterSection) &&
+    !firstCounter.innerHTML
+  ) {
+    for (const counter of counters) {
+      counterAnimated({
+        obj: counter,
+        start: counter.getAttribute("data-start"),
+        end: counter.getAttribute("data-end"),
+        type: counter.getAttribute("data-type"),
+      });
+    }
+
+    window.removeEventListener("scroll", runCounter);
+  }
+};
+
 const slider = {
   attrs: {
     slides: 0,
@@ -18,7 +82,7 @@ const slider = {
   },
   elements: {
     main: document.querySelector(".slider"),
-    dots: document.querySelector(".slider-dots")
+    dots: document.querySelector(".slider-dots"),
   },
   methods: {
     changeSlide: (slideIndex) => {
@@ -88,18 +152,18 @@ const slider = {
       slider.attrs.yDown = null;
     },
     addDots: () => {
-      for(let i = 1; i <= slider.attrs.slides; i++) {
-        const dot = document.createElement('li');
-        dot.classList.add('slide-dot');
-        dot.setAttribute('data-slide', i);
+      for (let i = 1; i <= slider.attrs.slides; i++) {
+        const dot = document.createElement("li");
+        dot.classList.add("slide-dot");
+        dot.setAttribute("data-slide", i);
 
-        if(i === 1) dot.classList.add('active');
+        if (i === 1) dot.classList.add("active");
 
         slider.elements.dots.append(dot);
       }
 
       slider.methods.dotOnClick();
-    }
+    },
   },
   onInit: ({ slides }) => {
     slider.attrs.slides = slides;
@@ -120,11 +184,16 @@ const slider = {
   },
 };
 
-const onInit = () => {
+const onLoadWindow = () => {
+  closeHeaderBar();
+
+  // Slider
   const slides = document.querySelectorAll(".slide");
   if (slides?.length) slider.onInit({ slides: slides.length });
 
-  closeHeaderBar();
+  // Counters
+  const counters = document.querySelectorAll(".hw-counter");
+  if (counters?.length) window.addEventListener("scroll", runCounter);
 };
 
-window.onload = onInit;
+window.onload = onLoadWindow;
