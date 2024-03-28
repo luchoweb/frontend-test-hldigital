@@ -40,10 +40,6 @@
     margin: 0 0 2em 0;
   }
 
-  @media (min-width: $break-tablet) {
-    
-  }
-
   @media (min-width: $break-desktop) {
     .row {
       flex-wrap: nowrap;

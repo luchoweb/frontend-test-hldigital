@@ -63,3 +63,8 @@
   margin: 0;
   padding: 0;
 }
+
+.star-mask {
+  -webkit-mask: url("/images/icons/star.svg") no-repeat center / contain;
+  mask: url("/images/icons/star.svg") no-repeat center / contain;
+}

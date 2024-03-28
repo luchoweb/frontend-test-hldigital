@@ -1,6 +1,3 @@
-@import "./includes/vars";
-@import "./includes/mixins";
-
 :root {
   --color-green: #005740;
   --color-yellow: #f4a900;
@@ -38,6 +35,6 @@ h6 {
   font-family: var(--ff-title);
 }
 
-@import "./includes/common";
+@import "./includes/style";
 @import "./components/style";
 @import "./sections/style";
