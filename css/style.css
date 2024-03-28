@@ -415,6 +415,10 @@ section {
   }
 }
 
+.how-works {
+  background-color: var(--color-yellow-light);
+}
+
 .reviews-title {
   font-size: 25px;
   margin: 1em auto;
