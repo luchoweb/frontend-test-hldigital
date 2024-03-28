@@ -2,19 +2,12 @@
   background-color: var(--color-yellow-light);
 
   .row {
+    flex-wrap: wrap;
     gap: var(--side-spacing-lg);
     margin: var(--section-spacing) 0;
 
     .col {
-      width: 20%;
-    }
-
-    @media (min-width: $break-desktop) {
-      margin: var(--side-spacing-lg);
-    }
-
-    @media (min-width: $break-large) {
-      margin: var(--section-spacing);
+      width: 100%;
     }
   }
 
@@ -22,7 +15,7 @@
     &-title {
       color: var(--color-green);
       font-size: 40px;
-      margin-bottom: 0.5em;
+      margin: 0 0 0.5em 0;
     }
 
     &-subhead {
@@ -52,6 +45,30 @@
         font-size: 18px;
         margin: 0;
       }
+    }
+  }
+
+  @media (min-width: $break-tablet) {
+    .row {
+      margin: var(--section-spacing) 0;
+
+      .col {
+        width: 45%;
+      }
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .row {
+      flex-wrap: nowrap;
+      gap: var(--side-spacing-lg);
+      margin: var(--section-spacing) var(--side-spacing-lg);
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .row {
+      margin: var(--section-spacing);
     }
   }
 }

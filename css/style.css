@@ -420,26 +420,17 @@ section {
   background-color: var(--color-yellow-light);
 }
 .how-works .row {
+  flex-wrap: wrap;
   gap: var(--side-spacing-lg);
   margin: var(--section-spacing) 0;
 }
 .how-works .row .col {
-  width: 20%;
-}
-@media (min-width: 1024px) {
-  .how-works .row {
-    margin: var(--side-spacing-lg);
-  }
-}
-@media (min-width: 1140px) {
-  .how-works .row {
-    margin: var(--section-spacing);
-  }
+  width: 100%;
 }
 .how-works .hw-title {
   color: var(--color-green);
   font-size: 40px;
-  margin-bottom: 0.5em;
+  margin: 0 0 0.5em 0;
 }
 .how-works .hw-subhead {
   font-size: 22px;
@@ -463,6 +454,26 @@ section {
 .how-works .hw-col-text {
   font-size: 18px;
   margin: 0;
+}
+@media (min-width: 768px) {
+  .how-works .row {
+    margin: var(--section-spacing) 0;
+  }
+  .how-works .row .col {
+    width: 45%;
+  }
+}
+@media (min-width: 1024px) {
+  .how-works .row {
+    flex-wrap: nowrap;
+    gap: var(--side-spacing-lg);
+    margin: var(--section-spacing) var(--side-spacing-lg);
+  }
+}
+@media (min-width: 1140px) {
+  .how-works .row {
+    margin: var(--section-spacing);
+  }
 }
 
 .reviews-title {
