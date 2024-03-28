@@ -6,7 +6,7 @@ function compileSass() {
   return gulp
     .src("css/scss/*.scss")
     .pipe(sass().on("error", sass.logError))
-    .pipe(cleanCss())
+    //.pipe(cleanCss()) // Minify
     .pipe(gulp.dest("css"));
 }
 gulp.task("sass", compileSass);
