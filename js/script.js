@@ -21,7 +21,6 @@ const closeHeaderBar = () => {
 
 const formatCurrency = (amount) =>
   new Intl.NumberFormat("en-US", {
-    style: "currency",
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(amount);
@@ -58,7 +57,7 @@ const runCounter = () => {
 
   if (
     elementIsVisibleInViewport(nextCounterSection) &&
-    !firstCounter.innerHTML
+    firstCounter.innerHTML === "0"
   ) {
     for (const counter of counters) {
       counterAnimated({
