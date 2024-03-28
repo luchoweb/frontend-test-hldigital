@@ -30,7 +30,7 @@ const counterAnimated = ({
   start,
   end,
   type = "number",
-  duration = 1000,
+  duration = 2000,
 }) => {
   let startTimestamp = null;
   const startNum = parseFloat(start);
@@ -51,12 +51,12 @@ const counterAnimated = ({
 };
 
 const runCounter = () => {
-  const nextCounterSection = document.querySelector(".visit-local");
+  const nextCounterSection = document.querySelector(".row-goals");
   const firstCounter = document.querySelector(".hw-counter");
   const counters = document.querySelectorAll(".hw-counter");
 
   if (
-    elementIsVisibleInViewport(nextCounterSection) &&
+    elementIsVisibleInViewport(nextCounterSection, true) &&
     firstCounter.innerHTML === "0"
   ) {
     for (const counter of counters) {
@@ -192,7 +192,10 @@ const onLoadWindow = () => {
 
   // Counters
   const counters = document.querySelectorAll(".hw-counter");
-  if (counters?.length) window.addEventListener("scroll", runCounter);
+  if (counters?.length) {
+    window.addEventListener("scroll", runCounter);
+    runCounter();
+  }
 };
 
 window.onload = onLoadWindow;
