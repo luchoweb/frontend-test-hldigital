@@ -1,3 +1,57 @@
 .how-works {
   background-color: var(--color-yellow-light);
+
+  .row {
+    gap: var(--side-spacing-lg);
+    margin: var(--section-spacing) 0;
+
+    .col {
+      width: 20%;
+    }
+
+    @media (min-width: $break-desktop) {
+      margin: var(--side-spacing-lg);
+    }
+
+    @media (min-width: $break-large) {
+      margin: var(--section-spacing);
+    }
+  }
+
+  .hw {
+    &-title {
+      color: var(--color-green);
+      font-size: 40px;
+      margin-bottom: 0.5em;
+    }
+
+    &-subhead {
+      font-size: 22px;
+      line-height: 1.5em;
+      margin: 0;
+    }
+
+    &-col {
+      &-icon {
+        background-color: var(--color-green-light);
+        border-radius: 50%;
+        display: grid;
+        height: 108px;
+        margin: 0 auto;
+        place-content: center;
+        width: 108px;
+      }
+
+      &-title {
+        color: var(--color-green);
+        font-size: 22px;
+        margin-bottom: 0.5em;
+      }
+
+      &-text {
+        font-size: 18px;
+        margin: 0;
+      }
+    }
+  }
 }
