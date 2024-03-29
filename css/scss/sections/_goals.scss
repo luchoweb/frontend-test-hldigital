@@ -140,14 +140,6 @@
               display: inline-block;
             }
           }
-
-          &-img {
-            .stars {
-              .star {
-                animation: spin 15s linear infinite;
-              }
-            }
-          }
         }
       }
 
@@ -163,6 +155,12 @@
 
           &-img {
             flex-basis: 40%;
+
+            .stars {
+              .star {
+                animation: spin 15s linear infinite;
+              }
+            }
           }
         }
 
