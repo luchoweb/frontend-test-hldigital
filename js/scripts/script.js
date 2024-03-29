@@ -226,11 +226,8 @@ const onLoadWindow = () => {
   }
 
   // FadeIn Animation
-  setTimeout(() => {
-    window.addEventListener("scroll", fadeInSection);
-    fadeInSection();
-  }, 1000);
+  window.addEventListener("scroll", fadeInSection);
+  fadeInSection();
 };
 
-window.scrollTo(0, 0);
 window.onload = onLoadWindow;
