@@ -30,6 +30,7 @@
     }
 
     &.closed {
+      opacity: 0;
       max-height: 0;
       padding: 0;
     }
