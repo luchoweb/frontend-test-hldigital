@@ -19,6 +19,10 @@
   --section-spacing: 80px;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--ff-text);
   font-size: 16px;

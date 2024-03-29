@@ -28,7 +28,7 @@ const counterAnimated = ({
   start,
   end,
   type = "number",
-  duration = 1500,
+  duration = 2000,
 }) => {
   let startTimestamp = null;
   const startNum = parseFloat(start);
@@ -55,7 +55,7 @@ const runCounter = () => {
 
   if (
     elementIsVisibleInViewport(nextCounterSection, true) &&
-    (firstCounter.innerHTML === "00" || firstCounter.innerHTML === "0,00")
+    (firstCounter.innerHTML === "00")
   ) {
     for (const counter of counters) {
       counterAnimated({
@@ -119,8 +119,6 @@ const slider = {
       slider.attrs.yDown = firstTouch.clientY;
     },
     handleTouchMove: (ev) => {
-      ev.preventDefault();
-
       if (!slider.attrs.xDown || !slider.attrs.yDown) {
         return;
       }
@@ -132,6 +130,8 @@ const slider = {
       const yDiff = slider.attrs.yDown - yUp;
 
       if (Math.abs(xDiff) > Math.abs(yDiff)) {
+        ev.preventDefault();
+
         if (xDiff > 0) {
           /* right swipe */
           if (slider.attrs.currentSlideIndex < slider.attrs.slides) {
@@ -199,8 +199,20 @@ const fadeInSection = () => {
   }
 };
 
+const closeOpenMenuMobile = () => {
+  const nav = document.querySelector(".header-nav");
+  nav.classList.toggle("opened");
+}
+
 const onLoadWindow = () => {
   closeHeaderBar();
+
+  const closeOpenMenuEl = document.querySelectorAll(".js-menu");
+  for (const element of closeOpenMenuEl) {
+    element.addEventListener("click", () => {
+      closeOpenMenuMobile();
+    });
+  }
 
   // Slider
   const slides = document.querySelectorAll(".slide");
@@ -214,7 +226,11 @@ const onLoadWindow = () => {
   }
 
   // FadeIn Animation
-  window.addEventListener("scroll", fadeInSection);
+  setTimeout(() => {
+    window.addEventListener("scroll", fadeInSection);
+    fadeInSection();
+  }, 1000);
 };
 
+window.scrollTo(0, 0);
 window.onload = onLoadWindow;
