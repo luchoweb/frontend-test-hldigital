@@ -1,0 +1,125 @@
+.locations {
+  .row {
+    flex-wrap: wrap;
+    gap: var(--side-spacing-sm);
+
+    .col {
+      width: 100%;
+
+      &-text {
+        margin-top: calc(var(--side-spacing-lg) * -1);
+      }
+    }
+  }
+
+  &-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(4, 1fr);
+    gap: var(--side-spacing-md);
+
+    .location {
+      &-img {
+        height: 272px;
+        margin: 0;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+
+        img {
+          height: 100%;
+          object-fit: cover;
+          transition: all 0.2s ease-in-out;
+          width: 100%;
+        }
+
+        figcaption {
+          background-color: var(--color-black);
+          bottom: 0;
+          color: white;
+          font-size: 28px;
+          font-family: var(--ff-title);
+          padding: 0.2em;
+          position: absolute;
+          text-align: center;
+          width: calc(100% - 0.4em);
+          z-index: 1;
+        }
+      }
+
+      &-plus {
+        padding-top: var(--side-spacing-sm);
+        font-size: 18px;
+
+        &-title {
+          color: var(--color-green);
+          font-family: var(--ff-title);
+          margin-top: 0.2em;
+        }
+      }
+
+      &:hover {
+        img {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  &-title {
+    font-size: 45px;
+    line-height: 1.2em;
+    margin: 0 0 0.7em 0;
+
+    span {
+      display: block;
+    }
+  }
+
+  &-text {
+    font-size: 22px;
+    line-height: 1.3em;
+    margin: 0 0 1.7em 0;
+  }
+
+  @media (min-width: $break-tablet) {
+    .row {
+      .col {
+        &-text {
+          margin-top: var(--side-spacing-lg);
+        }
+      }
+    }
+    &-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+
+      .location {
+        &-plus {
+          padding-top: var(--side-spacing-lg);
+        }
+      }
+    }
+  }
+
+  @media (min-width: $break-desktop) {
+    .row {
+      flex-wrap: nowrap;
+      gap: var(--side-spacing-lg);
+
+      .col {
+        width: 50%;
+
+        &-text {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  @media (min-width: $break-large) {
+    .row {
+      gap: calc(var(--side-spacing-lg) * 2);
+    }
+  }
+}

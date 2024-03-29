@@ -12,7 +12,7 @@
 
     &.current {
       opacity: 1;
-      max-height: 230px
+      max-height: 250px;
     }
 
     .stars {
@@ -48,5 +48,11 @@
   @media (min-width: $break-tablet) {
     margin: 0 auto;
     width: 640px;
+
+    .slide {
+      &.current {
+        max-height: 230px;
+      }
+    }
   }
 }

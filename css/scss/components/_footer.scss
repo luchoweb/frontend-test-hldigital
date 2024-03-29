@@ -1,10 +1,12 @@
 .footer {
+  background-color: black;
+  color: white;
   padding: var(--side-spacing-md);
 
   .row {
     flex-wrap: wrap;
   }
-  
+
   .copy-text {
     font-size: 24px;
     margin: 0 0 2rem 0;
@@ -19,6 +21,11 @@
     &-link {
       color: white;
       font-size: 24px;
+      @extend .transition;
+
+      &:hover {
+        color: var(--color-yellow);
+      }
     }
   }
 

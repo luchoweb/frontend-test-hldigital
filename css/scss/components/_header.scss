@@ -2,7 +2,7 @@
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1;
+  z-index: 10;
 
   &-bar {
     background-color: white;
@@ -61,6 +61,11 @@
       &-link {
         color: white;
         text-decoration: none;
+        @extend .transition;
+
+        &:hover {
+          color: var(--color-yellow);
+        }
       }
     }
 
@@ -89,6 +94,11 @@
     padding: 1.25rem 2rem;
     text-decoration: none;
     order: 1;
+    @extend .transition;
+
+    &:hover {
+      background-color: var(--color-yellow);
+    }
 
     @media (min-width: $break-tablet) {
       order: 2;
