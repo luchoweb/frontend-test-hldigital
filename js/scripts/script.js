@@ -30,7 +30,7 @@ const counterAnimated = ({
   start,
   end,
   type = "number",
-  duration = 2000,
+  duration = 1200,
 }) => {
   let startTimestamp = null;
   const startNum = parseFloat(start);
@@ -183,6 +183,15 @@ const slider = {
   },
 };
 
+const fadeInElement = (element) => {
+  if (
+    !element.classList.contains("fade-in") &&
+    elementIsVisibleInViewport(element, true)
+  ) {
+    element.classList.add("fade-in");
+  }
+};
+
 const onLoadWindow = () => {
   closeHeaderBar();
 
@@ -195,6 +204,14 @@ const onLoadWindow = () => {
   if (counters?.length) {
     window.addEventListener("scroll", runCounter);
     runCounter();
+  }
+
+  // FadeIn Animation
+  const sections = document.querySelectorAll("section");
+  if (sections?.length) {
+    for (const section of sections) {
+      window.addEventListener("scroll", () => fadeInElement(section));
+    }
   }
 };
 

@@ -33,6 +33,16 @@
         margin: 0 auto;
         place-content: center;
         width: 108px;
+
+        img {
+          @extend .transition;
+        }
+
+        &:hover {
+          img {
+            transform: scale(1.1);
+          }
+        }
       }
 
       &-title {

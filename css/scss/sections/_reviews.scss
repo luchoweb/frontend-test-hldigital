@@ -14,4 +14,13 @@
     font-family: var(--ff-title);
     margin-bottom: 0;
   }
+
+  .stars {
+    .star {
+      background: url("/images/icons/star-rating.svg") no-repeat;
+      display: block;
+      height: 24.58px;
+      width: 24.58px;
+    }
+  }
 }
