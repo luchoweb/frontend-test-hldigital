@@ -57,10 +57,7 @@ const runCounter = () => {
 
   if (
     elementIsVisibleInViewport(nextCounterSection) &&
-    (
-      firstCounter.innerHTML === "00" ||
-      firstCounter.innerHTML === "0,0"
-    )
+    (firstCounter.innerHTML === "00" || firstCounter.innerHTML === "0,0")
   ) {
     for (const counter of counters) {
       counterAnimated({
@@ -187,6 +184,7 @@ const slider = {
 };
 
 const fadeInElement = (element) => {
+  console.log("scroll")
   if (
     !element.classList.contains("fade-in") &&
     elementIsVisibleInViewport(element, true)
@@ -213,8 +211,9 @@ const onLoadWindow = () => {
   const sections = document.querySelectorAll("section");
   if (sections?.length) {
     for (const section of sections) {
-      fadeInElement(section);
-      window.addEventListener("scroll", () => fadeInElement(section));
+      window.addEventListener("scroll", () => {
+        fadeInElement(section)
+      });
     }
   }
 };
