@@ -88,7 +88,6 @@
           right: 0;
 
           .star {
-            animation: spin 15s linear infinite;
             position: absolute;
             z-index: 1;
 
@@ -139,6 +138,14 @@
 
             &::after {
               display: inline-block;
+            }
+          }
+
+          &-img {
+            .stars {
+              .star {
+                animation: spin 15s linear infinite;
+              }
             }
           }
         }
