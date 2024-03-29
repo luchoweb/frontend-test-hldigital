@@ -55,7 +55,7 @@ const runCounter = () => {
 
   if (
     elementIsVisibleInViewport(nextCounterSection, true) &&
-    (firstCounter.innerHTML === "00")
+    firstCounter.innerHTML === "00"
   ) {
     for (const counter of counters) {
       counterAnimated({
@@ -170,13 +170,13 @@ const slider = {
     slider.elements.main.addEventListener(
       "touchstart",
       slider.methods.handleTouchStart,
-      false
+      { passive: true }
     );
 
     slider.elements.main.addEventListener(
       "touchmove",
       slider.methods.handleTouchMove,
-      false
+      { passive: true }
     );
 
     slider.methods.addDots();
@@ -202,7 +202,7 @@ const fadeInSection = () => {
 const closeOpenMenuMobile = () => {
   const nav = document.querySelector(".header-nav");
   nav.classList.toggle("opened");
-}
+};
 
 const onLoadWindow = () => {
   closeHeaderBar();
