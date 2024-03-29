@@ -119,6 +119,8 @@ const slider = {
       slider.attrs.yDown = firstTouch.clientY;
     },
     handleTouchMove: (ev) => {
+      ev.preventDefault();
+
       if (!slider.attrs.xDown || !slider.attrs.yDown) {
         return;
       }
