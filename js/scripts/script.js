@@ -2,9 +2,7 @@ const elementIsVisibleInViewport = (el, partiallyVisible = false) => {
   const { top, left, bottom, right } = el.getBoundingClientRect();
   const { innerHeight, innerWidth } = window;
   return partiallyVisible
-    ? ((top > 0 && top < innerHeight) ||
-        (bottom > 0 && bottom < innerHeight)) &&
-        ((left > 0 && left < innerWidth) || (right > 0 && right < innerWidth))
+    ? (top > 0 && top < innerHeight) || (bottom > 0 && bottom < innerHeight)
     : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
 };
 
@@ -30,7 +28,7 @@ const counterAnimated = ({
   start,
   end,
   type = "number",
-  duration = 1200,
+  duration = 1500,
 }) => {
   let startTimestamp = null;
   const startNum = parseFloat(start);
@@ -56,8 +54,8 @@ const runCounter = () => {
   const counters = document.querySelectorAll(".hw-counter");
 
   if (
-    elementIsVisibleInViewport(nextCounterSection) &&
-    (firstCounter.innerHTML === "00" || firstCounter.innerHTML === "0,0")
+    elementIsVisibleInViewport(nextCounterSection, true) &&
+    (firstCounter.innerHTML === "00" || firstCounter.innerHTML === "0,00")
   ) {
     for (const counter of counters) {
       counterAnimated({
@@ -183,13 +181,19 @@ const slider = {
   },
 };
 
-const fadeInElement = (element) => {
-  console.log("scroll")
-  if (
-    !element.classList.contains("fade-in") &&
-    elementIsVisibleInViewport(element, true)
-  ) {
-    element.classList.add("fade-in");
+const fadeInSection = () => {
+  const sections = document.querySelectorAll("section");
+  if (sections?.length) {
+    for (const section of sections) {
+      const element = section.children[0];
+
+      if (
+        elementIsVisibleInViewport(section, true) &&
+        !element.classList?.contains("fade-in")
+      ) {
+        element.classList.add("fade-in");
+      }
+    }
   }
 };
 
@@ -208,14 +212,7 @@ const onLoadWindow = () => {
   }
 
   // FadeIn Animation
-  const sections = document.querySelectorAll("section");
-  if (sections?.length) {
-    for (const section of sections) {
-      window.addEventListener("scroll", () => {
-        fadeInElement(section)
-      });
-    }
-  }
+  window.addEventListener("scroll", fadeInSection);
 };
 
 window.onload = onLoadWindow;

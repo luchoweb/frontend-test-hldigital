@@ -1,9 +1,12 @@
 section {
   padding: var(--section-spacing) 0;
-  opacity: 0;
 
-  &.fade-in {
-    opacity: 1;
+  .container {
+    opacity: 0;
+
+    &.fade-in {
+      opacity: 1;
+    }
   }
 }
 
