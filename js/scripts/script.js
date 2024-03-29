@@ -57,7 +57,10 @@ const runCounter = () => {
 
   if (
     elementIsVisibleInViewport(nextCounterSection) &&
-    firstCounter.innerHTML === "0"
+    (
+      firstCounter.innerHTML === "00" ||
+      firstCounter.innerHTML === "0,0"
+    )
   ) {
     for (const counter of counters) {
       counterAnimated({
@@ -210,6 +213,7 @@ const onLoadWindow = () => {
   const sections = document.querySelectorAll("section");
   if (sections?.length) {
     for (const section of sections) {
+      fadeInElement(section);
       window.addEventListener("scroll", () => fadeInElement(section));
     }
   }

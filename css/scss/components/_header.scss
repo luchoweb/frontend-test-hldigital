@@ -7,7 +7,7 @@
   &-bar {
     background-color: white;
     text-align: center;
-    padding: .8rem 0;
+    padding: 0.8rem 0;
     position: relative;
     max-height: 57px;
     transition: all 0.2s linear;
@@ -26,11 +26,18 @@
       font-size: 14.3px;
       line-height: 1.1em;
       margin: 0;
+      padding-right: 1em;
     }
 
     &.closed {
       max-height: 0;
       padding: 0;
+    }
+
+    @media (min-width: $break-tablet) {
+      &-text {
+        padding-right: 0;
+      }
     }
   }
 
