@@ -191,9 +191,9 @@ const fadeInSection = () => {
 
       if (
         elementIsVisibleInViewport(section, true) &&
-        !element.classList?.contains("fade-in")
+        !element?.classList?.contains("fade-in")
       ) {
-        element.classList?.add("fade-in");
+        element.classList.add("fade-in");
       }
     }
   }
