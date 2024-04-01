@@ -190,8 +190,9 @@ const fadeInSection = () => {
       const element = section.children[0];
 
       if (
+        element && 
         elementIsVisibleInViewport(section, true) &&
-        !element?.classList?.contains("fade-in")
+        !element.classList?.contains("fade-in")
       ) {
         element.classList.add("fade-in");
       }
